@@ -34,3 +34,8 @@ Copy the resulting `.vst3` bundle to:
 - Do not install over the original plugin. Use a separate plugin name and bundle ID.
 
 The next engineering step is to replace the simple pitch estimate and filter bank with a proper pitch tracker and calibrated harmonic-band analysis, then test against reference audio.
+
+
+## Automated Windows build
+
+Every push to `main` and every pull request targeting `main` starts the Windows GitHub Actions workflow. The workflow builds the VST3 and Standalone targets and publishes them as downloadable workflow artifacts. Open the repository's **Actions** tab, select the latest **Build Windows VST3** run, and download the `VoxHarmonicRider-Windows-VST3` artifact when the run succeeds.
