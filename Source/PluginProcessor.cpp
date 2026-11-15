@@ -128,7 +128,7 @@ void VoxHarmonicRiderAudioProcessor::processBlock(juce::AudioBuffer<float>& buff
     {
         auto* x = buffer.getWritePointer(ch);
         auto& low = (ch == 0 ? lowCutL : lowCutR);
-        auto& filters = (ch == 0 ? bandL : bandR);
+        auto* filters = (ch == 0 ? bandL : bandR);
 
         for (int i = 0; i < n; ++i)
         {
