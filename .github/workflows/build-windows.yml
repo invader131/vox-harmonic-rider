@@ -1,0 +1,38 @@
+name: Build Windows VST3
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Configure
+        run: cmake -S . -B build -A x64
+
+      - name: Build VST3 and Standalone
+        run: cmake --build build --config Release --parallel 2
+
+      - name: Upload VST3 artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: VoxHarmonicRider-Windows-VST3
+          path: build/VoxHarmonicRider_artefacts/Release/VST3/
+          if-no-files-found: error
+
+      - name: Upload Standalone artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: VoxHarmonicRider-Windows-Standalone
+          path: build/VoxHarmonicRider_artefacts/Release/Standalone/
+          if-no-files-found: warn
