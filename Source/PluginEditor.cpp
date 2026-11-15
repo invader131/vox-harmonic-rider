@@ -23,6 +23,9 @@ VoxHarmonicRiderAudioProcessorEditor::VoxHarmonicRiderAudioProcessorEditor(VoxHa
     addToggle("dynThird", "DYN 3RD");
     addToggle("dynNth", "DYN NTH");
     addToggle("live", "LIVE MODE");
+
+    // Controls are created after setSize(); run layout again so they receive bounds.
+    resized();
 }
 
 void VoxHarmonicRiderAudioProcessorEditor::addSlider(const juce::String& id, const juce::String& caption)
