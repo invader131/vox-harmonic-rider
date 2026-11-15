@@ -32,6 +32,8 @@ juce_add_plugin(VoxHarmonicRider
     COPY_PLUGIN_AFTER_BUILD FALSE
 )
 
+juce_generate_juce_header(VoxHarmonicRider)
+
 target_sources(VoxHarmonicRider PRIVATE
     Source/PluginProcessor.cpp
     Source/PluginProcessor.h
